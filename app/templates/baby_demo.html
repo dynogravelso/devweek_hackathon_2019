@@ -1,0 +1,22 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1> This is a baby disaster! </h1>
+    <img src='{{image}}', alt="Test Baby"><br>
+    {% if babyMissing == True %}
+    Hey, baby is MISSING!<br>
+    {% endif %}
+    {{detectLowDanger}}<br>
+    {{detectHighDanger}}<br>
+    <script type="text/javascript">
+  setTimeout(function(){
+    location = ''
+  },250)
+
+  function goBack() {
+      window.history.back();
+  }
+  </script>
+  </body>
+</html>
