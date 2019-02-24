@@ -17,7 +17,15 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <p>Here is the most recent image from your home WORKSHOP THIS TEXT</p>
 <p>Change the bottom source to reflect the most recent image taken from Danny's script</p>
 <img src="static/image.png">
-<div><p><{{results}}></p></div>
+
+
+    {% if safe == True %}
+    You are safe! We count {{n_people}} person(s) in the picture<br>
+    {% elif safe == False %}
+    Alert! We see {{n_people}} unidentified intruder(s)!<br>
+    {% endif %}
+
+
 <p>Take a new picture with the button below!</p>
 
 

@@ -142,7 +142,7 @@ def intruder_results():
     if safe == True:
         send_sms_intruder(safety=safe, n_people=n_people)
 
-    return render_template('intruder_results.html',results=results)
+    return render_template('intruder_results.html',results=results, safe=safe, n_people=n_people)
 
 '''
 Baby Functionality
