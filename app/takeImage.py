@@ -11,7 +11,7 @@ def takeImage():
     # do what you want with frame
     #  and then save to file
     time.sleep(0.5)
-    cv2.imwrite('data/image.png', frame)
+    cv2.imwrite('static/image.png', frame)
 
     # When everything done, release the capture
     cap.release()

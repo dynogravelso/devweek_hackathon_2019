@@ -4,10 +4,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 
 
-def intruder(filename):
+def intruder(filename,api_key):
     faces = []
     #intantiate important objects
-    app = ClarifaiApp(api_key='ba71952039e44576a3ca159ae39d32ae')
+    app = ClarifaiApp(api_key=api_key)
     is_face_model = app.public_models.face_detection_model
     model = app.public_models.face_embedding_model
     reference_vectors = pickle.load(open('data/reference_vectors.pkl', 'rb'))
