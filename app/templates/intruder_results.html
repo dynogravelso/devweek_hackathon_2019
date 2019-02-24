@@ -14,11 +14,18 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </H1>
 </head>
 <body>
-<p>Here is the most recent image from your home WORKSHOP THIS TEXT</p>
-<p>Change the bottom source to reflect the most recent image taken from Danny's script</p>
+<p>Here is the most recent image captured by our software</p>
 <img src="static/image.png">
-<div><p><{{results}}></p></div>
-<p>Take a new picture with the button below!</p>
+
+
+    {% if safe == True %}
+    You are safe! We count {{n_people}} person(s) in the picture<br>
+    {% elif safe == False %}
+    Alert! We see {{n_people}} unidentified intruder(s)!<br>
+    {% endif %}
+
+
+<p>Go back to retry this demo!</p>
 
 
 </body>
