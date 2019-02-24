@@ -60,6 +60,39 @@ def send_sms_intruder(safety=False, n_people=0):
     client.messages.create(to="+16463513512", from_="+15167011855", body=body, media_url= media_url) # if you need to attach multimedia to your message, else remove this parameter.
     return (True)
 
+def send_sms_baby(lists):
+    danger_low_list = lists[1]
+    danger_high_list = lists[2]
+    if len(lists[0]) == 0:
+        body = f"Baby is missing!"
+        media_url = "https://www.babycenter.com/ims/2015/04/720x365x177344571_wide.jpg.pagespeed.ic.nXNn-WGsN8.jpg"
+    """
+    elif len(lists[2]) != 0:
+        body = f"High Danger Alert! These types of danger may be present: "
+        for i, danger in enumerate(danger_high_list):
+            if i == len(danger_high_list) - 1:
+                body += f'{danger}.'
+            else:
+                body += f'{danger}, '
+        media_url = "https://i.ytimg.com/vi/5B-YOjkPzJ4/maxresdefault.jpg"
+
+    elif len(lists[1]) != 0:
+        body = f"Potential Danger Alert! These potential dangers may be present: "
+        for i, danger in enumerate(danger_low_list):
+            if i == len(danger_high_list) - 1:
+                body += f'{danger}.'
+            else:
+                body += f'{danger}, '
+        media_url = "https://i.ytimg.com/vi/5B-YOjkPzJ4/maxresdefault.jpg"
+        # the following line needs your Twilio Account SID and Auth Token
+    """
+    client = Client("AC636b911804e4e5ece5bf99ff3a25c807", api_keys['twilio'])
+    # change the "from_" number to your Twilio number and the "to" number
+    # to the phone number you signed up for Twilio with, or upgrade your
+    # account to send SMS to any phone number
+    client.messages.create(to="+16463513512", from_="+15167011855", body=body, media_url= media_url) # if you need to attach multimedia to your message, else remove this parameter.
+    return (True)
+
 app = Flask(__name__,static_url_path='/static')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
@@ -184,37 +217,31 @@ def baby_demo():
             photo_counter += 20
     except:
         photo_counter = 0
-
     string = 23 + photo_counter
-
     print(string)
-
     if string <= 99:
         string = '0' + str(string)
     else:
         string = str(string)
-
     image = 'static/photo_data/frame00' + string + '.png'
     my_key = api_keys['clarifai']
-
     danger_low_list = ['toy','stand']
-    danger_high_list = ['knife', 'drink', 'flame', 'burn']
+    danger_high_list = ['knife', 'drink', 'flame']
     missing_list = ['child','baby']
     isBaby = general([my_key, image, missing_list,0.8])
+    detectLowDanger = general([my_key, image, danger_low_list,0])
+    detectHighDanger = general([my_key, image,danger_high_list,0.1])
+    if len(isBaby) == 0:
+        send_sms_baby([isBaby,detectLowDanger,detectHighDanger])
 
     if len(isBaby) == 0:
         babyMissing = True
-
     else:
         babyMissing = False
-    detectLowDanger = general([my_key, image, danger_low_list,0])
-    detectHighDanger = general([my_key, image,danger_high_list,0.1])
-
     if babyMissing == True:
         # needs to be made different than intruder one
         # send_sms_intruder()
         print("True")
-
     return render_template('baby_demo.html', image = image, babyMissing = babyMissing, detectLowDanger = detectLowDanger, detectHighDanger = detectHighDanger)
 
 if __name__ == "__main__":
