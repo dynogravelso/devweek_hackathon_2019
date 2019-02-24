@@ -54,12 +54,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     To do this, it utilizes Clarifai's face-embedding API. <br/>
     Using cosine similarity, the vector representing at least one of the faces in the taken image must match a face we have stored as occupants of the house.</p>
   <h3> Baby Safety </h3>
-<<<<<<< HEAD
+
   <p>This demo detects if a baby leaves their crib or if they are near a dangerous object and will send SMS if the baby is in danger.</p>
-=======
+
   <p>The baby monitor demo runs through a feed of video of two toddlers escaping from their crib. Using Clarifai's general image model, <br/>
      we ensure that your baby remains in its crib and text you if they escape or are in dangerous situations, i.e. around fire or knives.</p>
->>>>>>> 9bff2921f4d0f061da5af909f948471fea3a310c
+
 
   
 
@@ -67,6 +67,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- select option --> 
   <div class="w3-container w3-dark-grey w3-text-light-grey w3-padding-32" id="about">
   <h2> Select Desired Demo</h2>
+  
   <form  method="POST">
     {# This hidden_tag is a CSRF security feature. #}
     {{ demo_form.hidden_tag() }}
@@ -74,8 +75,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <br>
       {{ demo_form.submit() }}
   </form>
-  <br>
-
+    <br>
   <button onclick="goBack()">Go Back</button>
   </div>
 
@@ -113,6 +113,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
   function goBack() {
       window.history.back();
+      location.replace("http://127.0.0.1:5000/");
   }
   </script>
 </body>
