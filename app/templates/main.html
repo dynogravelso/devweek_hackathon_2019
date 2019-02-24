@@ -1,17 +1,33 @@
 <head>
 </head>
 
-<h1>Select Desired Demo</h1>
-<br>
+<h1> Welcome To Home View </h1>
 <body>
-    <form  method="POST">
-      {# This hidden_tag is a CSRF security feature. #}
-      {{ demo_form.hidden_tag() }}
-      {{ demo_form.demo_selection.label}}<br>{{demo_form.demo_selection}}
-      <br>
-        {{ demo_form.submit() }}
-    </form>
-<br>
+
+<h2> About The Project </h2>
+  <p>
+    This purpose of this project is to use modern artifical intelligence techniques to make your home safer.<br/>
+    This is done by leveraging Clarifai's awesome API to get quick access to a pretrained neural network for computer vision use.<br/>
+    Currently, we have two demos: Intruder Safety and Baby Safety
+  </p>
+  <img src="static/block_diagram.png" width="600" height="400">
+
+  <h3> Intruder Safety </h3>
+  <p>The intruder alert demo takes in an image and alerts the account-holder if only unknown people are in the picture.
+    To do this, it utilizes Clarifai's face-embedding API. <br/>
+    Using cosine similarity, the vector representing at least one of the faces in the taken image must match a face we have stored as occupants of the house.</p>
+  <h3> Baby Safety </h3>
+  <p>This demo detects if a baby leaves their crib or if they are near a dangerous object and will send SMS if the baby is in danger</p>
+
+  <h2> Select Desired Demo</h2>
+  <form  method="POST">
+    {# This hidden_tag is a CSRF security feature. #}
+    {{ demo_form.hidden_tag() }}
+    {{ demo_form.demo_selection.label}}<br>{{demo_form.demo_selection}}
+    <br>
+      {{ demo_form.submit() }}
+  </form>
+
   <button onclick="goBack()">Go Back</button>
 
   <script>
