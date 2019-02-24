@@ -1,0 +1,22 @@
+<head>
+</head>
+
+<h1>Login Please</h1>
+<br>
+<body>
+    <form  method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ demo_form.hidden_tag() }}
+      {{ demo_form.demo_selection.label}}<br>{{demo_form.demo_selection}}
+      <br>
+        {{ demo_form.submit() }}
+    </form>
+<br>
+  <button onclick="goBack()">Go Back</button>
+
+  <script>
+  function goBack() {
+      window.history.back();
+  }
+  </script>
+</body>

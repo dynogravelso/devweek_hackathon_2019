@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Intruder Alarm Page</title>
+    <H1>
+        Home Camera Feed
+    </H1>
+</head>
+<body>
+<p>Here is the most recent image from your home WORKSHOP THIS TEXT</p>
+<p>Change the bottom source to reflect the most recent image taken from Danny's script</p>
+
+<p>Take a new picture with the button below!</p>
+
+<form  method="POST">
+  {# This hidden_tag is a CSRF security feature. #}
+  {{ image_form.hidden_tag() }}
+  {{ image_form.take_image_selection.label}}<br>{{image_form.take_image_selection}}
+  <br>
+    {{ image_form.submit() }}
+</form>
+
+</body>
+</html>
