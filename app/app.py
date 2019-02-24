@@ -100,8 +100,8 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 class InfoForm(FlaskForm):
 
-    username = StringField("What is your username")
-    password = StringField("What is your password")
+    username = StringField("Username")
+    password = StringField("Password")
     submit = SubmitField('Submit')
 
 class DemosForm(FlaskForm):
