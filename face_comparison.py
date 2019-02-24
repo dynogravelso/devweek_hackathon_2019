@@ -5,7 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 
 #intantiate important objects
-app = ClarifaiApp(api_key='d9610a6498934cf1bd90e8e26684a2c2')
+app = ClarifaiApp(api_key='replace later')
 is_face_model = app.public_models.face_detection_model
 model = app.public_models.face_embedding_model
 filename = "ENTER FILENAME HERE"
